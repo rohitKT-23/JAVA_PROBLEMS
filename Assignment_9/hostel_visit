@@ -1,0 +1,32 @@
+import java.util.*;
+public class Hostel_Visit{
+    public static void main(String[] args) {
+        Scanner scnnn = new Scanner(System.in);
+        PriorityQueue<Long> max_HP = new PriorityQueue<>(Collections.reverseOrder());
+        int t_qury = scnnn.nextInt();
+        int kth = scnnn.nextInt();
+
+        while(t_qury-- > 0){
+            int qry_typ = scnnn.nextInt();
+            if (qry_typ == 1) {
+                long x_num = scnnn.nextLong();
+                long y_num = scnnn.nextLong();
+                long duriii = x_num * x_num + y_num * y_num;
+
+                if(max_HP.size() < kth){
+                    max_HP.add(duriii);
+                }
+                else{
+                    if(duriii < max_HP.peek()){
+                        max_HP.poll();
+                        max_HP.add(duriii);
+                    }
+                }
+            }
+            else{
+                System.out.println(max_HP.peek());
+            }
+        }
+    }
+}
+
